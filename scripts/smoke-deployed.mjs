@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
 import {ERC20,USDC} from '../src/logic.mjs';
-import {BUILD_VERSION} from '../src/worker.mjs';
+import {BUILD_VERSION} from '../src/version.mjs';
 const base=(process.env.RECURRING_AGENT_URL||'https://recurring-payment-agent.trantanlong2411.workers.dev').replace(/\/$/,'');
 const pause=t=>new Promise(r=>setTimeout(r,t));
 async function send(body){
