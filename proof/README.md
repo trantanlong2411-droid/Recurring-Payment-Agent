@@ -1,5 +1,8 @@
 # Recurring Payment Agent — challenge evidence
 
+> **Current verification status (3 Nov 2026):** GitHub unit tests and Wrangler bundle passed, but the deployed Worker still serves `Hello world` rather than the application. The actual [production smoke test](https://github.com/trantanlong2411-droid/Recurring-Payment-Agent/actions/runs/41680735534) failed at the deployment-version health check. Do not submit as a working demo until Cloudflare Builds deploys the code and a rerun of live verification passes. See [deployment repair instructions](../DEPLOYMENT.md).
+
+
 **Task:** Pharos Agent Arena / Medium / Payments / Recurring Payment Agent
 
 - **Public website / intended submission proof:** https://recurring-payment-agent.trantanlong2411.workers.dev/
