@@ -67,7 +67,7 @@ export function newSchedule(settings,key,now=Date.now()){
   createdAt:new Date(now).toISOString(),firstDueAt:settings.firstDueAt,
   nextDueAt:settings.firstDueAt,state:'ACTIVE',history:[],lastUpdatedAt:new Date(now).toISOString()};
 }
-export function advanceDue(s,now=Date.now()){
+export function advanceDue(s,now=Date.now(),origin='STATE_CATCHUP'){
  if(!s||s.state!=='ACTIVE')return 0;
  let created=0;
  while(Date.parse(s.nextDueAt)<=now&&created<52){
