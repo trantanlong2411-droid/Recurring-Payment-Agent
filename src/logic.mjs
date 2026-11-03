@@ -74,7 +74,7 @@ export function advanceDue(s,now=Date.now(),origin='STATE_CATCHUP'){
   const dueAt=s.nextDueAt;
   if(!s.history.some(p=>p.dueAt===dueAt)){
    s.history.unshift({id:dueAt,period:s.history.length+1,dueAt,
-    preparedAt:new Date(now).toISOString(),status:'PENDING',
+    preparedAt:new Date(now).toISOString(),status:'PENDING',trigger:origin,
     unsignedTemplate:unsignedTemplate(s),attempt:0,txHash:null,
     reason:null,receiptBlock:null,review:null});
    created++;
