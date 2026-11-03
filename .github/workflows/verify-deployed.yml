@@ -1,0 +1,28 @@
+name: Recurring Payment Agent — deployed Worker end-to-end proof
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/verify-deployed.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-recurring-scheduler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - name: Verify deployed Worker and automatic due periods with real Pharos balance checks
+        run: node scripts/smoke-deployed.mjs
+      - name: Archive original source-backed live evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pharos-recurring-payment-live-proof
+          path: proof/deployed-live-evidence.json
+          retention-days: 30
+          if-no-files-found: error
