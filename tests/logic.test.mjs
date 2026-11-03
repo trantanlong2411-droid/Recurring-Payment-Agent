@@ -26,8 +26,9 @@ test('weekly exact UTC and month-end anchor handle February without drift',()=>{
 test('prepares each due time once even when alarm is retried',()=>{
  const s=newSchedule(setup(),key,now);
  assert.equal(advanceDue(s,now+19999),0);
- assert.equal(advanceDue(s,now+20000),1);
+ assert.equal(advanceDue(s,now+20000,'ALARM'),1);
  assert.equal(s.history.length,1);assert.equal(s.history[0].status,'PENDING');
+ assert.equal(s.history[0].trigger,'ALARM');
  assert.equal(s.history[0].unsignedTemplate.signed,false);
  assert.equal(advanceDue(s,now+20000),0);assert.equal(s.history.length,1);
  assert.equal(advanceDue(s,Date.parse('2026-11-10T16:00:20Z')),1);
