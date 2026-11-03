@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "recurring-payment-agent",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-11-03",
+  "workers_dev": true,
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "SCHEDULES",
+        "class_name": "PaymentSchedule"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "PaymentSchedule"
+      ]
+    }
+  ]
+}
