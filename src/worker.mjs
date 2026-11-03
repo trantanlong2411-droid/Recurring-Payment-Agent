@@ -2,7 +2,7 @@ import {DurableObject} from 'cloudflare:workers';
 import {validateSetup,newSchedule,advanceDue,summary,CHAIN_ID} from './logic.mjs';
 import {verifyAndPrepare,verifySubmittedHash} from './chain.mjs';
 import {PAGE} from './page.mjs';
-export const BUILD_VERSION='recurring-pharos-2026-11-03-v1';
+import {BUILD_VERSION} from './version.mjs';
 const keyOk=x=>typeof x==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(x);
 const json=(v,status=200)=>Response.json(v,{status,headers:{'cache-control':'no-store','x-content-type-options':'nosniff'}});
 function fail(error,status=400){return json({ok:false,error},status)}
