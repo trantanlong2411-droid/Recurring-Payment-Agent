@@ -1,5 +1,7 @@
 # Recurring Payment Agent — Pharos Agent Arena
 
+**Deployment update:** The linked Cloudflare Worker has passed a [real production end-to-end verification](https://github.com/trantanlong2411-droid/Recurring-Payment-Agent/actions/runs/41683036544): UTC due period created once, unsigned USDC preparation from actual Pharos balances, unknown hash remains SUBMITTED, insufficient balance becomes FAILED, retry stays within the same period. No funds were transferred. Unit/build tests also passed.
+
 **Medium / Payments (100 points + optional video bonus)**
 
 - **Public application / Proof Link:** https://recurring-payment-agent.trantanlong2411.workers.dev/
