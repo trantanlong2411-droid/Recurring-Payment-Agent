@@ -2,7 +2,12 @@ name: Recurring Payment Agent — deployed Worker end-to-end proof
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/verify-deployed.yml']
+    paths:
+      - 'src/**'
+      - 'wrangler.jsonc'
+      - 'package.json'
+      - 'scripts/smoke-deployed.mjs'
+      - '.github/workflows/verify-deployed.yml'
   workflow_dispatch:
 permissions:
   contents: read
