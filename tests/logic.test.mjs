@@ -11,10 +11,12 @@ function setup(first='2026-11-03T16:00:20Z',frequency='weekly',asset='USDC'){
 }
 test('validates token, recipient, amount, recurrence and UTC due time',()=>{
  const x=setup();assert.equal(x.amountRaw,'100000000');assert.equal(x.frequency,'weekly');
- assert.throws(()=>validateSetup({...x,recipient:from},now),/distinct/);
- assert.throws(()=>validateSetup({...x,token:'DOGE'},now),/USDC/);
- assert.throws(()=>validateSetup({...x,amount:'1.1234567'},now),/decimal/);
- assert.throws(()=>validateSetup({...x,firstDueAt:'2025-01-01T00:00:00Z'},now),/First due/);
+ const original={title:'Rent',sender:from,recipient:to,token:'USDC',amount:'100',
+  frequency:'weekly',firstDueAt:'2026-11-03T16:00:20Z'};
+ assert.throws(()=>validateSetup({...original,recipient:from},now),/distinct/);
+ assert.throws(()=>validateSetup({...original,token:'DOGE'},now),/USDC/);
+ assert.throws(()=>validateSetup({...original,amount:'1.1234567'},now),/decimal/);
+ assert.throws(()=>validateSetup({...original,firstDueAt:'2025-01-01T00:00:00Z'},now),/First due/);
 });
 test('weekly exact UTC and month-end anchor handle February without drift',()=>{
  assert.equal(nextPaymentAt('2026-11-03T16:00:20.000Z','weekly',3),'2026-11-10T16:00:20.000Z');
