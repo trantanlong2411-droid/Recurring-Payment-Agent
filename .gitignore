@@ -1,0 +1,6 @@
+node_modules/
+bundle/
+.wrangler/
+.dev.vars
+.env
+.DS_Store
