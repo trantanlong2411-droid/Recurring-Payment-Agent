@@ -1,6 +1,6 @@
 # Cloudflare deployment checks for Recurring Payment Agent
 
-> **Actual blocker observed on 3 Nov 2026:** The expected Worker returned the literal plain-text response `Hello world` at `/api/health`, rather than the new JSON health response. The [deployed live workflow](https://github.com/trantanlong2411-droid/Recurring-Payment-Agent/actions/runs/41680735534) retried 34 times and then correctly failed with `Published Worker did not match deployed build`. This shows the new Worker code has **not** been deployed to that URL. This is separate from the successful GitHub unit tests and Worker bundle. Follow the Cloudflare Builds steps below.
+> **Resolved:** Cloudflare Workers Builds has deployed the linked repository. A full deployed-Worker test successfully created a due period and unsigned USDC draft on Pharos Mainnet on 3 November 2026. [Successful end-to-end evidence](https://github.com/trantanlong2411-droid/Recurring-Payment-Agent/actions/runs/41683036544). The former `Hello world` response was an older pre-deployment state; the configuration below is only for troubleshooting future deployments.
 
 
 The source is in [GitHub](https://github.com/trantanlong2411-droid/Recurring-Payment-Agent), with a compiled Cloudflare Worker and a SQLite-backed Durable Object named `PaymentSchedule`.
