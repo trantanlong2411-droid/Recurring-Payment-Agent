@@ -54,7 +54,7 @@ export class PaymentSchedule extends DurableObject {
  }
  async alarm(){
   let s=this.getData();if(!s)return;
-  this.due(s);
+  this.due(s,Date.now(),'ALARM');
   s=await this.reconcile(s);
   await this.arm(s);
  }
