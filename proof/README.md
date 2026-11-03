@@ -1,6 +1,6 @@
 # Recurring Payment Agent — challenge evidence
 
-> **Current verification status (3 Nov 2026):** GitHub unit tests and Wrangler bundle passed, but the deployed Worker still serves `Hello world` rather than the application. The actual [production smoke test](https://github.com/trantanlong2411-droid/Recurring-Payment-Agent/actions/runs/41680735534) failed at the deployment-version health check. Do not submit as a working demo until Cloudflare Builds deploys the code and a rerun of live verification passes. See [deployment repair instructions](../DEPLOYMENT.md).
+> **Deployment and live verification completed:** [GitHub Actions run 41683036544](https://github.com/trantanlong2411-droid/Recurring-Payment-Agent/actions/runs/41683036544) exercised the real Cloudflare Worker at Pharos Mainnet block 22029986. It verified one unique due period, successful unsigned 1-USDC preparation, no false PAID for an unmined hash, and safe insufficient-balance retry. The run's original JSON proof is stored as the `pharos-recurring-payment-live-proof` GitHub Actions artifact. No funds were signed or sent.
 
 
 **Task:** Pharos Agent Arena / Medium / Payments / Recurring Payment Agent
