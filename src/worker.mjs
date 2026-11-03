@@ -22,8 +22,8 @@ export class PaymentSchedule extends DurableObject {
   s.lastUpdatedAt=iso();
   this.db.exec("INSERT INTO documents(id,data) VALUES('schedule',?) ON CONFLICT(id) DO UPDATE SET data=excluded.data",JSON.stringify(s));
  }
- due(s,now=Date.now()){
-  const count=advanceDue(s,now);
+ due(s,now=Date.now(),origin='STATE_CATCHUP'){
+  const count=advanceDue(s,now,origin);
   if(count)this.save(s);
   return count;
  }
